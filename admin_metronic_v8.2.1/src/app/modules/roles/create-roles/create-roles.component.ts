@@ -12,7 +12,9 @@ export class CreateRolesComponent {
   name:string = '';
   isLoading: any;
 
-  SIDEBAR: any = SIDEBAR;   
+  SIDEBAR: any = SIDEBAR;  
+  
+  permisions:any =[];
 
   constructor(
     public modal: NgbActiveModal,
@@ -24,7 +26,14 @@ export class CreateRolesComponent {
 
   }
 
+  addPermission(permiso:string){
+    let INDEX = this.permisions.findIndex((perm:string)=> perm == permiso);
+    if(INDEX != -1){
+      this.permisions.splice(INDEX,1);
+    }else{
+      this.permisions.push(permiso);
+    }
+  }
   store(){
-
   }
 }
