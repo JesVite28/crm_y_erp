@@ -6,15 +6,15 @@ Este proyecto forma parte del curso **"Crea tu plataforma CRM Y ERP fullstack co
 
 ### BACK-END
 
-**Adrián de Jesus Vite Espinosa**
-**Ivan Guillermo**
-**Enrique Chavez Valdez**
-**Eduardo Simón Nogal**
+###**Adrián de Jesus Vite Espinosa**
+###**Ivan Guillermo**
+###**Enrique Chavez Valdez**
+###**Eduardo Simón Nogal**
 
 ### FRONT-END
 
-**Omar Torres Hernandez**
-**Gilberto Ángeles Hernández**
+###**Omar Torres Hernandez**
+###**Gilberto Ángeles Hernández**
 
 ## 🧱 Tecnologías utilizadas
 
