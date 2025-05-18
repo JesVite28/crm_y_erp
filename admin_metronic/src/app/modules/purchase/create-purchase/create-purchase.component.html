@@ -1,1 +1,166 @@
-<p>create-purchase works!</p>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Responsable: (*) </label>
+                <input type="text" disabled name="name" class="form-control form-control-solid mb-3 mb-lg-0"
+                    placeholder="Usuario de la compra" [(ngModel)]="full_name_user" />
+            </div>
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Sucursal: (*) </label>
+                <input type="text" disabled name="name" class="form-control form-control-solid mb-3 mb-lg-0"
+                    placeholder="Por ejemplo: Lima" [(ngModel)]="sucursal_user" />
+            </div>
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Almacenes: (*) </label>
+                <select class="form-control form-select-solid fw-bolder" name="warehouse_id" [(ngModel)]="warehouse_id"
+                    placeholder="Selec. Almacen">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Proveedor: (*) </label>
+                <select class="form-control form-select-solid fw-bolder" name="provider_id" [(ngModel)]="provider_id"
+                    placeholder="Selec. Proveedor">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+        </div>
+        <div class="row py-5">
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Fecha de Emisión: (*) </label>
+                <div class="input-group input-group-solid">
+                    <input type="date" name="date_emision" class="form-control form-control-lg form-control-solid"
+                        [(ngModel)]="date_emision" />
+                </div>
+            </div>
+            <div class="col-3">
+                <!--begin::Label-->
+                <label class="required fw-bold fs-6 mb-2">Tipo de comprobante: (*) </label>
+                <select class="form-control form-select-solid fw-bolder" name="type_comprobant"
+                    [(ngModel)]="type_comprobant" placeholder="Selec. Tipo">
+                    <option value="">Ninguno</option>
+                    <option value="FACTURA ELECTRONICA">FACTURA ELECTRONICA</option>
+                    <option value="NOTA DE CREDITO">NOTA DE CREDITO</option>
+                    <option value="NOTA DE DEBITO">NOTA DE DEBITO</option>
+                    <option value="RECIBO POR HONORARIOS">RECIBO POR HONORARIOS</option>
+                    <option value="GUIA DE REMISION">GUIA DE REMISION</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">N° de comprobante: (*) </label>
+                <input type="text" name="n_comprobant" [(ngModel)]="n_comprobant"
+                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="F-0001" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label class="fs-6 fw-semibold mb-2">Nota final:</label>
+                <textarea class="form-control form-control-solid" rows="3" name="description" [(ngModel)]="description"
+                    placeholder=""></textarea>
+            </div>
+        </div>
+        <div class="row py-5">
+            <div class="col-3">
+                <div class="d-flex align-items-center position-relative my-1">
+                    <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                    <input type="text" [(ngModel)]="search_products" (keyup.enter)="listProducts()" name="search"
+                        data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-12"
+                        placeholder="Search Products">
+                </div>
+            </div>
+            <div class="col-3">
+                <label class="required fw-bold fs-6 mb-2">Unidades: (*) </label>
+                <select class="form-control form-select-solid fw-bolder" name="unit_id" [(ngModel)]="unit_id"
+                    placeholder="Selec. Unidad">
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="required fw-bold fs-6 mb-2">Precio unitario: (*) </label>
+                <input type="number" name="price_unit" [(ngModel)]="price_unit"
+                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Por ejemplo: 49.50" />
+            </div>
+            <div class="col-2">
+                <label class="required fw-bold fs-6 mb-2">Cantidad Solic.: (*) </label>
+                <input type="number" name="quantity" [(ngModel)]="quantity"
+                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Por ejemplo: 49.50" />
+            </div>
+            <div class="col-2">
+                <button class="btn btn-sm btn-primary">+</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
+                        <thead>
+                            <tr class="fw-bold text-muted">
+                                <th class="min-w-140px">Producto</th>
+                                <th class="min-w-120px">Unidad</th>
+                                <th class="min-w-120px">Precio unitario</th>
+                                <th class="min-w-120px">Cantidad</th>
+                                <th class="min-w-100px text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    Bateria de carro
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    Caja
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    $8000
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    4
+                                </td>
+                                <td class="text-end">
+
+                                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="ki-duotone ki-pencil fs-2"><span class="path1"></span><span
+                                                class="path2"></span></i> </a>
+
+                                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                        <i class="ki-duotone ki-trash fs-2"><span class="path1"></span><span
+                                                class="path2"></span><span class="path3"></span><span
+                                                class="path4"></span><span class="path5"></span></i> </a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    <input type="number" name="importe" [(ngModel)]="importe" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Por ejemplo: 49.50" />
+                                    <small>Importe total: </small>
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    <input type="number" name="igv" [(ngModel)]="igv" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Por ejemplo: 49.50" />
+                                    <small>IGV total: </small>
+                                </td>
+                                <td class="text-gray-900 fw-bold text-hover-primary fs-6">
+                                    <input type="number" name="total" [(ngModel)]="total" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Por ejemplo: 49.50" />
+                                    <small>Total de la compra: </small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
