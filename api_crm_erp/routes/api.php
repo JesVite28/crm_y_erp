@@ -28,6 +28,8 @@ use App\Http\Controllers\Comission\CategorieComissionController;
 use App\Http\Controllers\Configuration\ProductCategorieController;
 use App\Http\Controllers\Comission\SegmentClientComissionController;
 use App\Http\Controllers\Configuration\SucursaleDeliverieController;
+use App\Http\Controllers\Transport\TransportController;
+use App\Http\Controllers\Transport\TransportDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,7 +135,12 @@ Route::group([
     Route::resource("comission-week",WeekComissionController::class); 
     Route::resource("comission-categorie",CategorieComissionController::class); 
     Route::resource("comission-client-segment",SegmentClientComissionController::class); 
-    Route::resource("comission-position",PositionComissionController::class); 
+    Route::resource("comission-position",PositionComissionController::class);
+    
+    Route::get("transport/config",[TransportController::class,"config"]);
+    Route::post("transport/index",[TransportController::class,'index']);
+    Route::resource("transport",TransportController::class); 
+    Route::resource("transport-detail",TransportDetailController::class);
 });
 
 Route::get("pdf/proforma/{id}",[ProformaController::class,"proforma_pdf"]);
