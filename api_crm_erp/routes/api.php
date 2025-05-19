@@ -28,6 +28,7 @@ use App\Http\Controllers\Comission\CategorieComissionController;
 use App\Http\Controllers\Configuration\ProductCategorieController;
 use App\Http\Controllers\Comission\SegmentClientComissionController;
 use App\Http\Controllers\Configuration\SucursaleDeliverieController;
+use App\Http\Controllers\Compras\ComprasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,6 +135,9 @@ Route::group([
     Route::resource("comission-categorie",CategorieComissionController::class); 
     Route::resource("comission-client-segment",SegmentClientComissionController::class); 
     Route::resource("comission-position",PositionComissionController::class); 
+    
+    Route::get("purchase/config",[ComprasController::class,"config"]);
+    Route::resource("purchase",ComprasController::class); 
 });
 
 Route::get("pdf/proforma/{id}",[ProformaController::class,"proforma_pdf"]);
