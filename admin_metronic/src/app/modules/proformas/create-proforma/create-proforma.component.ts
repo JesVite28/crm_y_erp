@@ -123,7 +123,7 @@ export class CreateProformaComponent {
          this.isLoadingProcess();
        }
    );
- }
+  }
  
   isLoadingProcess(){
     this.proformaService.isLoadingSubject.next(true);

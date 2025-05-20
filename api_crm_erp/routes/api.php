@@ -28,9 +28,9 @@ use App\Http\Controllers\Comission\CategorieComissionController;
 use App\Http\Controllers\Configuration\ProductCategorieController;
 use App\Http\Controllers\Comission\SegmentClientComissionController;
 use App\Http\Controllers\Configuration\SucursaleDeliverieController;
+use App\Http\Controllers\Compras\ComprasController;
 use App\Http\Controllers\Transport\TransportController;
 use App\Http\Controllers\Transport\TransportDetailController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -137,6 +137,9 @@ Route::group([
     Route::resource("comission-client-segment",SegmentClientComissionController::class); 
     Route::resource("comission-position",PositionComissionController::class);
     
+    Route::get("purchase/config",[ComprasController::class,"config"]);
+    Route::resource("purchase",ComprasController::class); 
+
     Route::get("transport/config",[TransportController::class,"config"]);
     Route::post("transport/index",[TransportController::class,'index']);
     Route::resource("transport",TransportController::class); 
