@@ -32,19 +32,22 @@ class Proforma extends Model
         "date_pay_complete",
         "description",
         "state_despacho",
+
+        "state_despacho",
+        "date_entrega",
         // 
-        "created_at",
-        "updated_at"
+        // "created_at",
+        // "updated_at"
     ];
     
-    // public function setCreatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["created_at"] = Carbon::now();
-    // }
-    // public function setUpdatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["updated_at"] = Carbon::now();
-    // }
+    public function setCreatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["created_at"] = Carbon::now();
+    }
+    public function setUpdatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["updated_at"] = Carbon::now();
+    }
 
     public function asesor(){
         return $this->belongsTo(User::class,"user_id");
@@ -64,6 +67,10 @@ class Proforma extends Model
 
     public function details(){
         return $this->hasMany(ProformaDetail::class,"proforma_id");
+    }
+
+    public function entregados(){
+        return $this->hasMany(ProformaDetail::class,"proforma_id")->where("date_entrega","<>",NULL);
     }
 
     public function proforma_deliverie() {

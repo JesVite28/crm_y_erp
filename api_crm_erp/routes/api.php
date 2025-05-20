@@ -32,6 +32,7 @@ use App\Http\Controllers\Compras\ComprasController;
 use App\Http\Controllers\Transport\TransportController;
 use App\Http\Controllers\Transport\TransportDetailController;
 use App\Http\Controllers\Product\ConversionController;
+use App\Http\Controllers\Despacho\DespachoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -149,6 +150,9 @@ Route::group([
     Route::get("conversions/config",[ConversionController::class,"config"]);
     Route::post("conversions/index",[ConversionController::class,'index']);
     Route::resource("conversions",ConversionController::class);
+
+    Route::post("despacho/index",[DespachoController::class,'index']);
+    Route::resource("despacho",DespachoController::class);
 });
 
 Route::get("pdf/proforma/{id}",[ProformaController::class,"proforma_pdf"]);

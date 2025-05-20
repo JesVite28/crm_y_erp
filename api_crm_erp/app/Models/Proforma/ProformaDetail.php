@@ -3,8 +3,10 @@
 namespace App\Models\Proforma;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Product\Product;
 use App\Models\Configuration\Unit;
+use App\Models\Configuration\Warehouse;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Configuration\ProductCategorie;
@@ -27,18 +29,21 @@ class ProformaDetail extends Model
         "unit_id",
         "impuesto",
         // 
-        "created_at",
-        "updated_at"
+        // "created_at",
+        // "updated_at",
+        "date_entrega",
+        "user_entrega",
+        "warehouse_id",
     ];
     
-    // public function setCreatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["created_at"] = Carbon::now();
-    // }
-    // public function setUpdatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["updated_at"] = Carbon::now();
-    // }
+    public function setCreatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["created_at"] = Carbon::now();
+    }
+    public function setUpdatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["updated_at"] = Carbon::now();
+    }
 
     public function proforma(){
         return $this->belongsTo(Proforma::class,"proforma_id");
@@ -50,6 +55,14 @@ class ProformaDetail extends Model
 
     public function product(){
         return $this->belongsTo(Product::class,"product_id");
+    }
+
+    public function user_despacho(){
+        return $this->belongsTo(User::class,"user_entrega");
+    }
+    
+    public function warehouse(){
+        return $this->belongsTo(Warehouse::class,"warehouse_id");
     }
 
     public function product_categorie(){
