@@ -7,12 +7,14 @@ use App\Http\Controllers\UserAccessController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\Caja\CajaEgresoController;
+use App\Http\Controllers\Compras\ComprasController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Caja\CajaIngresoController;
 use App\Http\Controllers\Proforma\ProformaController;
 use App\Http\Controllers\Caja\CajaSucursaleController;
 use App\Http\Controllers\Configuration\UnitController;
 use App\Http\Controllers\Comission\ComissionController;
+use App\Http\Controllers\Compras\CompraDetalleController;
 use App\Http\Controllers\Product\ProductWalletController;
 use App\Http\Controllers\Configuration\ProviderController;
 use App\Http\Controllers\Configuration\SucusaleController;
@@ -28,11 +30,11 @@ use App\Http\Controllers\Comission\CategorieComissionController;
 use App\Http\Controllers\Configuration\ProductCategorieController;
 use App\Http\Controllers\Comission\SegmentClientComissionController;
 use App\Http\Controllers\Configuration\SucursaleDeliverieController;
-use App\Http\Controllers\Compras\ComprasController;
 use App\Http\Controllers\Transport\TransportController;
 use App\Http\Controllers\Transport\TransportDetailController;
 use App\Http\Controllers\Product\ConversionController;
 use App\Http\Controllers\Despacho\DespachoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -137,10 +139,13 @@ Route::group([
     Route::resource("comission-week",WeekComissionController::class); 
     Route::resource("comission-categorie",CategorieComissionController::class); 
     Route::resource("comission-client-segment",SegmentClientComissionController::class); 
-    Route::resource("comission-position",PositionComissionController::class);
+    Route::resource("comission-position",PositionComissionController::class); 
     
     Route::get("purchase/config",[ComprasController::class,"config"]);
+    Route::post("purchase/index",[ComprasController::class,'index']);
     Route::resource("purchase",ComprasController::class); 
+    Route::post("purchase-detail/entrega",[CompraDetalleController::class,'entrega']);
+    Route::resource("purchase-detail",CompraDetalleController::class);
 
     Route::get("transport/config",[TransportController::class,"config"]);
     Route::post("transport/index",[TransportController::class,'index']);

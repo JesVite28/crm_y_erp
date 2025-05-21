@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg-2';
+import { EditItemPurchaseComponent } from './components/edit-item-purchase/edit-item-purchase.component';
+import { DeleteItemPurchaseComponent } from './components/delete-item-purchase/delete-item-purchase.component';
 
 
 @NgModule({
@@ -19,19 +21,21 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
     CreatePurchaseComponent,
     EditPurchaseComponent,
     ListsPurchasesComponent,
-    DeletePurchaseComponent
+    DeletePurchaseComponent,
+    EditItemPurchaseComponent,
+    DeleteItemPurchaseComponent
   ],
   imports: [
     CommonModule,
     PurchaseRoutingModule,
-    
+
     HttpClientModule,
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
     InlineSVGModule,
     NgbModalModule,
-    NgbPaginationModule
+    NgbPaginationModule,
   ]
 })
 export class PurchaseModule { }

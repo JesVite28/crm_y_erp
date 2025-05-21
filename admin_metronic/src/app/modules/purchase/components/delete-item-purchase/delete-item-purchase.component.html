@@ -2,7 +2,7 @@
     <!--begin::Modal header-->
     <div class="modal-header" id="kt_modal_add_user_header">
         <!--begin::Modal title-->
-        <h2 class="fw-bolder">Delete Purchase: #{{ purchase.id }}</h2>
+        <h2 class="fw-bolder">Delete Detail Purchase: #{{ index + 1}}</h2>
         
         <!--end::Modal title-->
         <!--begin::Close-->
@@ -24,7 +24,7 @@
         <!--begin::Form-->
         <form id="kt_modal_add_user_form" class="form" action="#">
             <p>
-                ¿ESTAS SEGURO DE ELIMINAR ESTA ORDEN DE COMPRA?
+                ¿ESTAS SEGURO DE ELIMINAR ESTE DETALLADO DEL PRODUCTO : "{{ detail_purchase.product.title }}"?
             </p>
             <div class="text-center pt-15">
                 <button type="reset" class="btn btn-light me-3" (click)="modal.dismiss()">Cerrar</button>
