@@ -33,18 +33,18 @@ class Proforma extends Model
         "description",
         "state_despacho",
         // 
-        "created_at",
-        "updated_at"
+        // "created_at",
+        // "updated_at"
     ];
     
-    // public function setCreatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["created_at"] = Carbon::now();
-    // }
-    // public function setUpdatedAtAttribute($value) {
-    //     date_default_timezone_set("America/Lima");
-    //     $this->attributes["updated_at"] = Carbon::now();
-    // }
+    public function setCreatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["created_at"] = Carbon::now();
+    }
+    public function setUpdatedAtAttribute($value) {
+        date_default_timezone_set("America/Lima");
+        $this->attributes["updated_at"] = Carbon::now();
+    }
 
     public function asesor(){
         return $this->belongsTo(User::class,"user_id");

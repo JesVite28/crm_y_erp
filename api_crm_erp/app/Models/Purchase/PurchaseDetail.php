@@ -1,36 +1,32 @@
 <?php
 
-namespace App\Models\Proforma;
+namespace App\Models\Purchase;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Product\Product;
 use App\Models\Configuration\Unit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Configuration\ProductCategorie;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ProformaDetail extends Model
+class PurchaseDetail extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        "proforma_id",
+        "purchase_id",
         "product_id",
-        "product_categorie_id",
+        "unit_id",
+        "description",
         "quantity",
         "price_unit",
-        "discount",
-        "subtotal",
         "total",
-        "description",
-        "unit_id",
-        "impuesto",
-        // 
-        // "created_at",
-        // "updated_at"
+        "state",
+        "user_entrega",
+        "date_entrega",
     ];
-    
+
     public function setCreatedAtAttribute($value) {
         date_default_timezone_set("America/Lima");
         $this->attributes["created_at"] = Carbon::now();
@@ -40,8 +36,8 @@ class ProformaDetail extends Model
         $this->attributes["updated_at"] = Carbon::now();
     }
 
-    public function proforma(){
-        return $this->belongsTo(Proforma::class,"proforma_id");
+    public function purchase() {
+        return $this->belongsTo(Purchase::class,"purchase_id");
     }
 
     public function unit(){
@@ -52,7 +48,7 @@ class ProformaDetail extends Model
         return $this->belongsTo(Product::class,"product_id");
     }
 
-    public function product_categorie(){
-        return $this->belongsTo(ProductCategorie::class,"product_categorie_id");
+    public function encargado(){
+        return $this->belongsTo(User::class,"user_entrega");
     }
 }

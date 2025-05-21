@@ -65,7 +65,7 @@ export class ProformasService {
   
   listProformas(page:number = 1,data:any = {}){
     this.isLoadingSubject.next(true);
-    let URL = URL_SERVICIOS+"/proformas/index";
+    let URL = URL_SERVICIOS+"/proformas/index?page="+page;
     let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authservice.token});
     return this.http.post(URL,data,{headers:headers}).pipe(
       finalize(() => this.isLoadingSubject.next(false))

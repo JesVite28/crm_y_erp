@@ -11,17 +11,17 @@ const routes: Routes = [
     component: PurchaseComponent,
     children: [
       {
-        path: 'registro',
+        path:'registro',
         component: CreatePurchaseComponent
       },
       {
-        path: 'listado',
+        path:'listado',
         component: ListsPurchasesComponent
       },
       {
-        path: 'listado/editar/:id',
+        path:'listado/editar/:id',
         component: EditPurchaseComponent
-      },
+      }
     ]
   }
 ];
